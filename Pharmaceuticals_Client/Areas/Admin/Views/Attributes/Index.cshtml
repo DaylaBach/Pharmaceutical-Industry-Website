@@ -1,0 +1,81 @@
+﻿@model Pharmaceuticals_Client.Areas.Admin.Models.AdminViewModel
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "List of Attributes";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    <a class="btn btn-success m-1" asp-controller="Attributes" asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Attributes" method="get">
+    <div class="form-group">
+        <input class="form-control-sm" name="name" placeholder="Enter name" />
+        <select class="form-control-sm" name="product" asp-items="ViewBag.products">
+            <option value="">-- Product --</option>
+        </select>
+        <button class="btn btn-warning" type="submit">search</button>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.attribute.AttributeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.attribute.AttributeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.attribute.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.attribute.Unit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.attribute.ProductId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.attList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AttributeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AttributeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Unit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@item.AttributeId" class="btn btn-info">Detail</a>
+                    <a asp-action="Edit" asp-route-id="@item.AttributeId" class="btn btn-primary">Edit</a>
+                    <form asp-action="Delete" class="d-inline">
+                        <input type="hidden" asp-for="@item.AttributeId" name="id" />
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model.attList, page => Url.Action("Index", new { page = page, name = ViewBag.name, product = ViewBag.product }),
+    new PagedListRenderOptions
+    {
+        ContainerDivClasses = new string[] { "p-3" },
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    }
+)

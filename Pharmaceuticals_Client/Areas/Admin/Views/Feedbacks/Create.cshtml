@@ -1,0 +1,74 @@
+﻿@model Pharmaceuticals_Client.Areas.Admin.Models.AdminViewModel
+
+@{
+    ViewData["Title"] = "Create new Feedback";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="feedback.FullName" class="control-label"></label>
+                <input asp-for="feedback.FullName" class="form-control" />
+                <span asp-validation-for="feedback.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="feedback.CompanyName" class="control-label"></label>
+                <input asp-for="feedback.CompanyName" class="form-control" />
+                <span asp-validation-for="feedback.CompanyName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="feedback.Address" class="control-label"></label>
+                <input asp-for="feedback.Address" class="form-control" />
+                <span asp-validation-for="feedback.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="feedback.City" class="control-label"></label>
+                <input asp-for="feedback.City" class="form-control" />
+                <span asp-validation-for="feedback.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="feedback.State" class="control-label"></label>
+                <input asp-for="feedback.State" class="form-control" />
+                <span asp-validation-for="feedback.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="feedback.PostalCode" class="control-label"></label>
+                <input asp-for="feedback.PostalCode" class="form-control" />
+                <span asp-validation-for="feedback.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="feedback.Country" class="control-label"></label>
+                <input asp-for="feedback.Country" class="form-control" />
+                <span asp-validation-for="feedback.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="feedback.Email" class="control-label"></label>
+                <input asp-for="feedback.Email" class="form-control" />
+                <span asp-validation-for="feedback.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="feedback.Phone" class="control-label"></label>
+                <input asp-for="feedback.Phone" class="form-control" />
+                <span asp-validation-for="feedback.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="feedback.Comments" class="control-label"></label>
+                <input asp-for="feedback.Comments" class="form-control" />
+                <span asp-validation-for="feedback.Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

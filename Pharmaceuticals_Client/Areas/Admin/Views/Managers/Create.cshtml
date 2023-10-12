@@ -1,0 +1,66 @@
+﻿@model Pharmaceuticals_Client.Areas.Admin.Models.AdminViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Manager</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="managerInfo.FullName" class="control-label"></label>
+                <input asp-for="managerInfo.FullName" class="form-control" />
+                <span asp-validation-for="managerInfo.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="managerInfo.Address" class="control-label"></label>
+                <input asp-for="managerInfo.Address" class="form-control" />
+                <span asp-validation-for="managerInfo.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="managerInfo.Email" class="control-label"></label>
+                <input asp-for="managerInfo.Email" class="form-control" />
+                <span asp-validation-for="managerInfo.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="managerInfo.Phone" class="control-label"></label>
+                <input asp-for="managerInfo.Phone" class="form-control" />
+                <span asp-validation-for="managerInfo.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="managerInfo.Username" class="control-label"></label>
+                <input asp-for="managerInfo.Username" class="form-control" />
+                <span asp-validation-for="managerInfo.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="managerInfo.Password" class="control-label"></label>
+                <input asp-for="managerInfo.Password" type="password" class="form-control" />
+                <span asp-validation-for="managerInfo.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="managerInfo.Role" class="control-label"></label>
+                <input asp-for="managerInfo.Role" class="form-control" />
+                <span asp-validation-for="managerInfo.Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="managerInfo.Image" class="control-label"></label>
+                <input asp-for="managerInfo.Image" type="file" class="form-control" />
+                <span asp-validation-for="managerInfo.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

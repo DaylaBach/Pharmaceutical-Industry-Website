@@ -1,0 +1,307 @@
+﻿@model Pharmaceuticals_Client.Areas.Admin.Models.AdminViewModel
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@if (HttpContextAccessor.HttpContext.Session.GetString("JWToken") == null)
+{
+    HttpContextAccessor.HttpContext.Response.Redirect("/Admin/Login");
+}
+@if (Model.manager == null)
+{
+    HttpContextAccessor.HttpContext.Response.Redirect("/Admin/Login");
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>@ViewBag.Title</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="/admin/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="/admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/admin/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/admin/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/admin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/admin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/admin/css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <img src="/admin/images/icon/logo.png" alt="CoolAdmin" />
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-warehouse"></i>Production
+                            </a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li style="background-color:white">
+                                    <a asp-controller="Categories" asp-action="Index">Categories</a>
+                                </li>
+                                <li style="background-color:white">
+                                    <a asp-controller="Manufacturers" asp-action="Index">Manufacturers</a>
+                                </li>
+                                <li style="background-color:white">
+                                    <a asp-controller="Products" asp-action="Index">Products</a>
+                                </li>
+                                <li style="background-color:white">
+                                    <a asp-controller="Attributes" asp-action="Index">Attribute</a>
+                                </li>
+                                <li style="background-color:white">
+                                    <a asp-controller="Feedbacks" asp-action="Index">Feedbacks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="" asp-controller="Managers" asp-action="Index">
+                                <i class="fas fa-user-secret"></i>Managers
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" asp-controller="Candidates" asp-action="Index">
+                                <i class="fas fa-user-plus"></i>Candidates
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                    <img src="/admin/images/icon/logo.png" alt="Cool Admin" />
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar2">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="active has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-warehouse"></i>Production
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li style="background-color:white">
+                                    <a asp-controller="Categories" asp-action="Index">Categories</a>
+                                </li>
+                                <li style="background-color:white">
+                                    <a asp-controller="Manufacturers" asp-action="Index">Manufacturers</a>
+                                </li>
+                                <li style="background-color:white">
+                                    <a asp-controller="Products" asp-action="Index">Products</a>
+                                </li>
+                                <li style="background-color:white">
+                                    <a asp-controller="Attributes" asp-action="Index">Attribute</a>
+                                </li>
+                                <li style="background-color:white">
+                                    <a asp-controller="Feedbacks" asp-action="Index">Feedbacks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="" asp-controller="Managers" asp-action="Index">
+                                <i class="fas fa-user-secret"></i>Managers
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" asp-controller="Candidates" asp-action="Index">
+                                <i class="fas fa-user-plus"></i>Candidates
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <div>
+                                <h1>@ViewBag.Title</h1>
+                            </div>
+                            <div class="header-button">
+
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu">
+                                        <div class="image">
+                                            @*Thông tin của manager lấy ra đây*@
+                                            @if (Model.manager != null)
+                                            {
+                                                @if (Model.manager.Image == null || Model.manager.Image == "")
+                                                {
+                                                    <img src="/images/AdminImages/plain-avatar.png" alt="@Model.manager.FullName" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="/images/AdminImages/@Model.manager.Image" alt="@Model.manager.FullName" />
+                                                }
+                                            }
+                                        </div>
+                                        <div class="content">
+                                            @if (Model.manager != null)
+                                            {
+                                                <a class="js-acc-btn" href="#">@Model.manager.FullName</a>
+                                            }
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <div class="image">
+                                                    <a href="#">
+                                                        @if (Model.manager != null)
+                                                        {
+                                                            @if (Model.manager.Image == null || Model.manager.Image == "")
+                                                            {
+                                                                <img src="/images/AdminImages/plain-avatar.png" alt="@Model.manager.FullName" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="/images/AdminImages/@Model.manager.Image" alt="@Model.manager.FullName" />
+                                                            }
+                                                        }
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                        @if (Model.manager != null)
+                                                        {
+                                                            <a href="#">@Model.manager.FullName</a>
+                                                        }
+                                                    </h5>
+                                                    @if (Model.manager != null)
+                                                    {
+                                                        <span class="email">@Model.manager.Email</span>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    @if (Model.manager != null)
+                                                    {
+                                                        <a href="~/Admin/Managers/Detail/@Model.manager.AdminId" >
+                                                            <i class="zmdi zmdi-account"></i>Account
+                                                        </a>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__footer">
+                                                <a asp-controller="Home" asp-action="Logout">
+                                                    <i class="zmdi zmdi-power"></i>Logout
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        @if (ViewBag.ErrorMessages != null && ViewBag.ErrorMessages != "")
+                        {
+                            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show text-center">
+                                <span class="badge badge-pill badge-danger float-md-left mt-1">Error</span>
+                                @ViewBag.ErrorMessages
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        }
+                        @if (ViewBag.Messages != null && ViewBag.Messages != "")
+                        {
+                            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                                <span class="badge badge-pill badge-success"></span>
+                                @ViewBag.Messages
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        }
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="/admin/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/admin/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/admin/vendor/slick/slick.min.js">
+    </script>
+    <script src="/admin/vendor/wow/wow.min.js"></script>
+    <script src="/admin/vendor/animsition/animsition.min.js"></script>
+    <script src="/admin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="/admin/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/admin/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="/admin/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/admin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/admin/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/admin/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="/admin/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->

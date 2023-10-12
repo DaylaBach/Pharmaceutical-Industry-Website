@@ -1,0 +1,119 @@
+﻿@model Pharmaceuticals_Client.Areas.Admin.Models.AdminViewModel
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "List of Feedbacks";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    <a class="btn btn-success m-1" asp-controller="Feedbacks" asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Feedbacks" method="get">
+    <div class="form-group">
+        <input class="form-control-sm" name="name" placeholder="Enter name" />
+        <input class="form-control-sm" name="address" placeholder="Enter address" />
+        <input class="form-control-sm" name="email" placeholder="Enter email" />
+        <input class="form-control-sm" name="phone" placeholder="Enter phone" />
+        <div class="m-1">
+            <label class="control-label">Start date</label>
+            <input class="form-control-sm" asp-for="@Model.feedback.Created_date" name="startDate" />
+            <label class="control-label">End date</label>
+            <input class="form-control-sm" asp-for="@Model.feedback.Created_date" name="endDate" />
+        </div>
+    </div>
+    <button class="btn btn-warning" type="submit">search</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.feedback.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.feedback.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.feedback.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.feedback.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.feedback.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.feedback.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.feedback.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.feedback.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.feedback.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.feedback.Comments)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.feedbackList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+
+                <td>
+                    <a asp-action="Detail" asp-route-id="@item.FeedbackId" class="btn btn-info">Detail</a>
+                    <a asp-action="Edit" asp-route-id="@item.FeedbackId" class="btn btn-primary">Edit</a>
+                    <form asp-action="Delete" class="d-inline">
+                        <input type="hidden" asp-for="@item.FeedbackId" name="id" />
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model.feedbackList, page => Url.Action("Index", new { page = page, name = ViewBag.name }),
+    new PagedListRenderOptions
+    {
+        ContainerDivClasses = new string[] { "p-3" },
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    }
+)

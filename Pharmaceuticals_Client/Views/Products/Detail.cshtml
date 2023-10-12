@@ -1,0 +1,242 @@
+﻿@model Pharmaceuticals_Client.Models.UserProductViewModels
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section-bg section-padding subheader" style="background-image: url(/home/images/subheader.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="page-title">Products Details</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Products Details</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="section pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8">
+                <div class="shop_details_box">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="product_slider_box">
+                                <div class="product_slider">
+
+                                    <div class="slide_item">
+                                        <img src="/images/Products/@Model.product.ProductImage" class="image-fit-contain" alt="img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product_details product_block">
+                                <h2 class="product_title">@Model.product.ProductName</h2>
+
+                                <ul class="product_meta">
+                                    <li>
+                                        <strong>@Model.product.ProductSize</strong>
+                                    </li>
+                                    <li>
+                                        <strong>@Model.product.Productivity</strong>
+                                    </li>
+                                    <li>
+                                        <strong>@Model.product.MachineWeight</strong>
+                                    </li>
+                                    <li>
+                                        <strong>@Model.product.ModelNumber</strong>
+                                    </li>
+
+                                    <li>
+                                        <strong>@Model.product.Category.CategoryName</strong>
+                                    </li>
+                                    <li>
+                                        <strong>@Model.product.Manufacturer.ManufacturerName</strong>
+
+                                    </li>
+                                    @foreach (var item in Model.product.Attributes)
+                                    {
+                                        <li>
+                                            <strong>@Html.DisplayFor(modelItem => item.AttributeName) : @Html.DisplayFor(modelItem => item.Value) (@Html.DisplayFor(modelItem => item.Unit))</strong>
+                                        </li>
+                                    }
+
+                                </ul>
+                                <div class="product_social">
+                                    <button type="button" class="social_trigger">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                    <ul class="social_media">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-linkedin-in"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-pinterest-p"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="customer_photos">
+                                <h4>Customer Photos</h4>
+                                <div class="images">
+                                    @foreach (var item in ViewBag.products)
+                                    {
+                                        <img src="/images/Products/@item.ProductImage" class="image-fit-contain" alt="img">
+
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>Customer Reviews</h4>
+                            <ul class="comments shop_comments">
+                                @foreach (var item in ViewBag.feedback)
+                                {
+                                    <li class="comment">
+                                            <p class="comment_text">
+                                                @item.Comments
+                                            </p> 
+                                    </li>
+                                } 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <aside class="col-xl-4">
+                <div class="product_sidebar">
+                    <div class="product_sidebar_wrap">
+                        <div class="sidebar_widget">
+                            <h5 class="widget_title">Similar Products</h5>
+                            <ul class="related_products">
+                                @foreach (var prod in ViewBag.products)
+                                {
+                                    <li>
+                                        <div class="product_thumb">
+                                            <a href="#">
+                                                <img src="/images/Products/@prod.ProductImage" class="image-fit-contain" alt="img">
+                                            </a>
+                                        </div>
+                                        <div class="product_caption">
+                                            <h6 class="product_title mb-0"><a href="shop-details.html">@prod.ProductName</a></h6>
+                                        </div>
+                                    </li>
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-padding thm-bg-color-light">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-truck"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">Free Shipping</h6>
+                        <p class="mb-0">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-shopping-bag"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">100% Secure Payment</h6>
+                        <p class="mb-0">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-headphones-alt"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">Great Support 24x7</h6>
+                        <p class="mb-0">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-cube"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">Money - Back Guarantee</h6>
+                        <p class="mb-0">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<a href="#" data-target="html" class="back-to-top ft-sticky">
+    <i class="fal fa-chevron-up"></i>
+</a>
+
+
+
+
+
+

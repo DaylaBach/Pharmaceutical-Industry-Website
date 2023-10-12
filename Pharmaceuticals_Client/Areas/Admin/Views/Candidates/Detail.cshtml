@@ -1,0 +1,79 @@
+﻿@model Pharmaceuticals_Client.Areas.Admin.Models.AdminViewModel
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Detail</h1>
+
+<div>
+    <h4>Candidate</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.candidate.CandidateId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.candidate.CandidateId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.candidate.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.candidate.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.candidate.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.candidate.Phone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.candidate.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.candidate.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.candidate.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.candidate.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.candidate.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.candidate.Image)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.candidate.Resume)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.candidate.Resume)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.candidate.Education)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.candidate.Education)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.candidate.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.candidate.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.candidate.Created_date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.candidate.Created_date)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

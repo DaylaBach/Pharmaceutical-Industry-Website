@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PharmaceuticalsAPI", "PharmaceuticalsAPI.csproj", "{B9CE5448-A3B9-4FDC-B1A4-0C5738AE2A3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pharmaceuticals_Client", "..\Pharmaceuticals_Client\Pharmaceuticals_Client.csproj", "{D26FBEE4-BDCD-4A6C-82C6-FB4FF703EBF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9CE5448-A3B9-4FDC-B1A4-0C5738AE2A3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9CE5448-A3B9-4FDC-B1A4-0C5738AE2A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9CE5448-A3B9-4FDC-B1A4-0C5738AE2A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9CE5448-A3B9-4FDC-B1A4-0C5738AE2A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D26FBEE4-BDCD-4A6C-82C6-FB4FF703EBF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D26FBEE4-BDCD-4A6C-82C6-FB4FF703EBF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D26FBEE4-BDCD-4A6C-82C6-FB4FF703EBF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D26FBEE4-BDCD-4A6C-82C6-FB4FF703EBF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8AA7A56-BC13-49E3-B10D-267BC61D08C2}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,173 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="banner">
+
+    <div class="banner_slider">
+
+        <div class="slide-item section-bg" style="background-image: url(/home/images/banner/1.jpg);">
+            <div class="banner_text">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="inner">
+                                <h1 class="title">Good health is the <span class="thm-color-one">root</span>, of all happiness.</h1>
+                                <a href="/Products" class="thm-btn thm-bg-color-one">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="slide-item section-bg" style="background-image: url(/home/images/banner/2.jpg);">
+            <div class="banner_text">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="inner">
+                                <h1 class="title">Good health is the <span class="thm-color-one">root</span>, of all happiness.</h1>
+                                
+                                <a href="/Products" class="thm-btn thm-bg-color-one">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="slide-item section-bg" style="background-image: url(/home/images/banner/3.jpg);">
+            <div class="banner_text">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="inner">
+                                <h1 class="title">Good health is the <span class="thm-color-one">root</span>, of all happiness.</h1>
+                                
+                                <a href="/Products" class="thm-btn thm-bg-color-one">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<section class="section pt-0">
+    <div class="container">
+        <div class="section-header m-3">
+            <h3 class="title" >New Arrivals</h3>
+        </div>
+        <div class="row new_arrivals">
+
+            @foreach (var pro in ViewBag.products)
+            {
+                <div class="px-2 slide-item">
+                    <div class="product_box">
+                        <div class="product_badges d-flex justify-content-between">
+                           
+                        </div>
+                        <div class="product_image">
+                            <a href="#" class="d-flex h-100">
+                                <img src="~/images/Products/@pro.ProductImage" alt="img" class="image-fit-contain">
+                            </a>
+                        </div>
+
+                        <div class="product_caption text-center">
+                            <h4 class="title"><a href="#">@pro.ProductName</a></h4>
+                            <p>@pro.ProductSize</p>
+                            <p>@pro.Productivity</p>
+                            <p>@pro.MachineWeight</p>
+                            <p>@pro.ModelNumber</p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+<section class="section pt-0">
+    <div class="container">
+        <div class="section-header">
+            <h3 class="title">Our Happy Clients</h3>
+        </div>
+        <div class="row testimonial_slider">
+            @foreach (var feed in ViewBag.feedback)
+            {
+                <div class="px-2 slide-item">
+                    <div class="testimonial_item">
+                        <span class="quote_icon"></span>
+                        <p class="text">@feed.Comments</p>
+                        <div class="testimonial_author">
+                            <h6 class="user_name mb-0">@feed.FullName</h6>
+                            <p class="mb-0 user_post">@feed.CompanyName</p>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+
+<section class="section-padding thm-bg-color-light">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-truck"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">Free Shipping</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-shopping-bag"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">100% Secure Payment</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-headphones-alt"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">Great Support 24x7</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-cube"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">Money - Back Guarantee</h6>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

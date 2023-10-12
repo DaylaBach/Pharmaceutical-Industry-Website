@@ -1,0 +1,43 @@
+﻿@model Pharmaceuticals_Client.Areas.Admin.Models.AdminViewModel
+
+@{
+    ViewData["Title"] = "Create new Manufacturer";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="manufacturer.ManufacturerName" class="control-label"></label>
+                <input asp-for="manufacturer.ManufacturerName" class="form-control" />
+                <span asp-validation-for="manufacturer.ManufacturerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="manufacturer.Adress" class="control-label"></label>
+                <input asp-for="manufacturer.Adress" class="form-control" />
+                <span asp-validation-for="manufacturer.Adress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="manufacturer.Email" class="control-label"></label>
+                <input asp-for="manufacturer.Email" class="form-control" />
+                <span asp-validation-for="manufacturer.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="manufacturer.Phone" class="control-label"></label>
+                <input asp-for="manufacturer.Phone" class="form-control" />
+                <span asp-validation-for="manufacturer.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

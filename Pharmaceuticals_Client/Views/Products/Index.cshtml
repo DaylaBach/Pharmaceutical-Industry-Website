@@ -1,0 +1,195 @@
+﻿@model Pharmaceuticals_Client.Models.UserProductViewModels
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section-bg section-padding subheader" style="background-image: url(/home/images/subheader.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="page-title">Products</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Products</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <aside class="col-lg-3">
+                <div class="sidebar style_two">
+                    <div class="sidebar_inner">
+
+                        <div class="sidebar_widget">
+
+                            <form asp-controller="Products" method="get">
+                                <div class="input-group">
+                                    <input type="text" name="name" class="form-control form-control-custom" placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button type="submit">
+                                            <i class="fal fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="sidebar_widget">
+                            <h5 class="widget_title">Category</h5>
+                            <ul class="categories">
+                                @foreach (var cate in ViewBag.categories)
+                                {
+                                    <li>
+                                        <a asp-action="Index" asp-route-cateId="@cate.CategoryId">@cate.CategoryName</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        <div class="sidebar_widget">
+                            <h5 class="widget_title">Recent Post</h5>
+                            <ul class="recent_post">
+                                @foreach (var prod3 in ViewBag.products)
+                                {
+                                    <li>
+                                        <div class="post_thumb">
+                                            <a href="shop-details.html">
+                                                <img src="~/images/Products/@prod3.ProductImage"  alt="">
+                                            </a>
+                                        </div>
+                                        <div class="post_caption">
+                                            <h6 class="post_title"><a href="shop-details.html">@prod3.ProductName</a></h6>
+                                            <p class="post_title">@prod3.ProductSize</p>
+                                            <p class="post_title">@prod3.ModelNumber</p>
+                                           
+                                                
+                                            
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                <div class="row justify-content-center">
+                    @foreach (var prod in Model.productList)
+                    {
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product_box">
+
+                                <div class="product_image">
+                                    <a href="@Url.Action("Detail", "Products", new {id = prod.ProductId })" class="d-flex h-100">
+                                        <img src="/images/Products/@prod.ProductImage" alt="img" class="image-fit-contain">
+                                    </a>
+                                </div>
+
+                                <div class="product_caption text-center">
+                                    <h4 class="title"><a href="@Url.Action("Detail", "Products", new {id = prod.ProductId })">@prod.ProductName</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <nav>
+                            <ul class="pagination">
+                                @Html.PagedListPager(Model.productList, page => Url.Action("Index", new { page = page, name = ViewBag.name }),
+                                    new PagedListRenderOptions
+                                        {
+                                            ContainerDivClasses = new string[] { "p-2" },
+                                            LiElementClasses = new string[] { "page-item" },
+                                            PageClasses = new string[] { "page-link" }
+                                        }
+                                )
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-padding thm-bg-color-light">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-truck"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">Free Shipping</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-shopping-bag"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">100% Secure Payment</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-headphones-alt"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">Great Support 24x7</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="htw-block">
+                    <div class="icon">
+                        <i class="fal fa-cube"></i>
+                    </div>
+                    <div class="text">
+                        <h6 class="title">Money - Back Guarantee</h6>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<a href="#" data-target="html" class="back-to-top ft-sticky">
+    <i class="fal fa-chevron-up"></i>
+</a>
+
+
+
+
+

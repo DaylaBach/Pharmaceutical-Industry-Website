@@ -1,0 +1,110 @@
+﻿@model Pharmaceuticals_Client.Models.Candidate
+
+@{
+    ViewData["Title"] = "CandidateDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="user_account">
+    <div class="container">
+            <div class="section">
+                <div class="user_info_box">
+                    <div class="user_box">
+                        <div class="image">
+                            @if (Model.Image != null && Model.Image != "")
+                            {
+                                <img src="/candidateImages/@Model.Image" class="image-fit" alt="img">
+                            }
+                            else
+                            { 
+                                <img src="/candidateImages/plain-avatar.png" class="image-fit" alt="img">
+                            }
+                        </div>
+                        <div class="user_text">
+                            @*<h6 class="name mb-0">Madison Ava</h6>
+                            <p class="mb-0">New York, USA</p>*@
+                        </div>
+                    </div>
+                    <form asp-action="CandidateDetail" class="user_form" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input asp-for="CandidateId" readonly hidden />
+                                <input asp-for="Password" readonly hidden />
+                                <div class="form-group">
+                                    <label asp-for="FullName" class="control-label"></label>
+                                    <input asp-for="FullName" class="form-control">
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Phone" class="control-label"></label>
+                                    <input asp-for="Phone" class="form-control">
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Address" class="control-label"></label>
+                                    <input asp-for="Address" class="form-control">
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Education" class="control-label"></label>
+                                    <input asp-for="Education" type="text" class="form-control" />
+                                    <span asp-validation-for="Education" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Image" class="control-label"></label>
+                                    <input asp-for="Image" type="text" hidden class="form-control" />
+                                    <input asp-for="Image" type="file" class="form-control" />
+                                    <span asp-validation-for="Image" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Resume" class="control-label"></label>
+                                    <input asp-for="Resume" type="text" readonly class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Resume" class="control-label"></label>
+                                    <input asp-for="Resume" type="file" class="form-control" />
+                                    <span asp-validation-for="Resume" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="thm-btn thm-bg-color-one">Save Changes</button>
+                        </div>
+                    </form>
+                    <hr />
+                    <form asp-action="Delete" method="post">
+                        <div class="col-12">
+                            <div class="connect_social">
+                                <div class="text">
+                                    <label class="mb-0">In case you don't want to work with us anymore :(</label>
+                                </div>
+                                <input type="hidden" asp-for="@Model.CandidateId" name="id" />
+                                <button onclick="return confirm('Are you sure you want to delete your account?')"
+                                   class="btn btn-danger">Delete Account</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+    </div>
+</section>

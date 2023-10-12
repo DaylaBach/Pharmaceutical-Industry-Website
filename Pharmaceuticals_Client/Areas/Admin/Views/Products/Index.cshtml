@@ -1,0 +1,115 @@
+﻿@model Pharmaceuticals_Client.Areas.Admin.Models.AdminViewModel
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "List of Products";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    <a class="btn btn-success m-1" asp-controller="Products" asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Products" method="get">
+    <div class="form-group">
+        <input class="form-control-sm" name="name" placeholder="Enter name" />
+        <input class="form-control-sm" name="modelNumber" placeholder="Enter Model number" />
+        <select class="form-control-sm" name="category" asp-items="ViewBag.categories">
+            <option value="0">-- Category --</option>
+        </select>
+        <select class="form-control-sm" name="manufacturer" asp-items="ViewBag.manufacturers">
+            <option value="0">-- Manufacturer --</option>
+        </select>
+        <div class="m-1">
+            <label class="control-label">Start date</label>
+            <input class="form-control-sm" asp-for="@Model.product.CreatedDate" name="startDate" />
+            <label class="control-label">End date</label>
+            <input class="form-control-sm" asp-for="@Model.product.CreatedDate" name="endDate" />
+        </div>
+        <button class="btn btn-warning" type="submit">search</button>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.product.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.ProductImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.ProductSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.Productivity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.MachineWeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.ModelNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.ManufacturerId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.proList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    <img src="/images/Products/@item.ProductImage" alt="Alternate Text" width="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductSize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Productivity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MachineWeight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModelNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
+                </td>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@item.ProductId" class="btn btn-info">Detail</a>
+                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-primary">Edit</a>
+                    <form asp-action="Delete" class="d-inline">
+                        <input type="hidden" asp-for="@item.ProductId" name="id" />
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model.proList, page => Url.Action("Index", new { page = page, name = ViewBag.name, modelNumber = ViewBag.modelNumber, category = ViewBag.category, manufacturer = ViewBag.manufacturer, startDate = ViewBag.startDate, endDate = ViewBag.endDate }),
+    new PagedListRenderOptions
+    {
+        ContainerDivClasses = new string[] { "p-3" },
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    }
+)

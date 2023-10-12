@@ -1,0 +1,69 @@
+﻿@model Pharmaceuticals_Client.Areas.Admin.Models.AdminViewModel
+
+@{
+    ViewData["Title"] = "Create new Candidate";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="candidate.CandidateId" class="control-label"></label>
+                <input asp-for="candidate.CandidateId" class="form-control" />
+                <span asp-validation-for="candidate.CandidateId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="candidate.FullName" class="control-label"></label>
+                <input asp-for="candidate.FullName" class="form-control" />
+                <span asp-validation-for="candidate.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="candidate.Phone" class="control-label"></label>
+                <input asp-for="candidate.Phone" class="form-control" />
+                <span asp-validation-for="candidate.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="candidate.Address" class="control-label"></label>
+                <input asp-for="candidate.Address" class="form-control" />
+                <span asp-validation-for="candidate.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="candidate.Email" class="control-label"></label>
+                <input asp-for="candidate.Email" class="form-control" />
+                <span asp-validation-for="candidate.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="candidate.Image" class="control-label"></label>
+                <input asp-for="candidate.Image" type="file" class="form-control" />
+                <span asp-validation-for="candidate.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="candidate.Resume" class="control-label"></label>
+                <input asp-for="candidate.Resume" type="text" hidden class="form-control" value="NoResume" />
+                <input asp-for="candidate.Resume" type="file" class="form-control" />
+                <span asp-validation-for="candidate.Resume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="candidate.Education" class="control-label"></label>
+                <input asp-for="candidate.Education" class="form-control" />
+                <span asp-validation-for="candidate.Education" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="candidate.Password" class="control-label"></label>
+                <input asp-for="candidate.Password" class="form-control" />
+                <span asp-validation-for="candidate.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

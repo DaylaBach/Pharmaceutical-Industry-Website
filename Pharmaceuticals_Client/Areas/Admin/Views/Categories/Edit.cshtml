@@ -1,0 +1,39 @@
+﻿@model Pharmaceuticals_Client.Areas.Admin.Models.AdminViewModel
+
+@{
+    ViewData["Title"] = "Edit Category";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="category.CategoryId" hidden class="form-control" />
+            <div class="form-group">
+                <label asp-for="category.CategoryName" class="control-label"></label>
+                <input asp-for="category.CategoryName" class="form-control" />
+                <span asp-validation-for="category.CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="category.Status" class="control-label"></label>
+                <input asp-for="category.Status" class="form-control" />
+                <span asp-validation-for="category.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="category.CreatedDate" class="control-label"></label>
+                <input asp-for="category.CreatedDate" class="form-control" />
+                <span asp-validation-for="category.CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

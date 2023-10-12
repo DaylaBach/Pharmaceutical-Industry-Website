@@ -1,0 +1,40 @@
+﻿@model Pharmaceuticals_Client.Models.Candidate
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="sign_in_up_box thm-bg-color-light">
+                    <h3>Log In</h3>
+                    <form asp-action="Login" method="POST">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input type="email" asp-for="Email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input type="password" asp-for="Password" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="thm-btn thm-bg-color-one w-100">Login</button>
+                                <p class="mt-3 mb-0 text-center fw-500">
+                                    Don't have an account? <a href="~/Career/Register" class="thm-color-one">Register</a>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
